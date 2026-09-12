@@ -16,6 +16,11 @@ export const useStore = create(
         products.forEach((product) => { const index = cart.findIndex((item) => item.id === product.id); if (index >= 0) cart[index] = { ...cart[index], quantity: cart[index].quantity + 1 }; else cart.push({ ...product, quantity: 1 }) })
         return { cart }
       }),
+      addMissingToCart: (products) => set((state) => {
+        const existingIds = new Set(state.cart.map((item) => item.id))
+        const missingProducts = products.filter((product) => !existingIds.has(product.id))
+        return { cart: [...state.cart, ...missingProducts.map((product) => ({ ...product, quantity: 1 }))] }
+      }),
       updateQuantity: (id, quantity) => set((state) => ({ cart: quantity < 1 ? state.cart.filter((item) => item.id !== id) : state.cart.map((item) => item.id === id ? { ...item, quantity } : item) })),
       removeFromCart: (id) => set((state) => ({ cart: state.cart.filter((item) => item.id !== id) })),
       toggleFavorite: (product) => set((state) => ({ favorites: state.favorites.some((item) => item.id === product.id) ? state.favorites.filter((item) => item.id !== product.id) : [...state.favorites, product] })),
