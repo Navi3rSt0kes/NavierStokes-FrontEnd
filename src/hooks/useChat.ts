@@ -6,7 +6,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000/c
 const initialMessages: ChatMessage[] = [{
   id: 'welcome',
   role: 'assistant',
-  content: '¡Hola! Soy tu asistente de compras. Cuéntame qué necesitas y armaré tu carrito.',
+  content: 'Hi! I am your shopping assistant. Tell me what you need and I will build your cart.',
 }]
 
 function createMessage(role: ChatMessage['role'], content: string): ChatMessage {
@@ -43,16 +43,16 @@ export function useChat() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message }),
       })
-      if (!response.ok) throw new Error('No fue posible obtener una respuesta del agente.')
+      if (!response.ok) throw new Error('Unable to get a response from the assistant.')
 
       const data = (await response.json()) as ChatResponse
       setMessages((current) => [
         ...current,
-        createMessage('assistant', data.response || 'No recibí una respuesta.'),
+        createMessage('assistant', data.response || 'I did not receive a response.'),
       ])
       setCart(Array.isArray(data.cart) ? data.cart : [])
     } catch (requestError) {
-      setError(requestError instanceof Error ? requestError.message : 'Ocurrió un error al conectar con el backend.')
+      setError(requestError instanceof Error ? requestError.message : 'An error occurred while connecting to the backend.')
     } finally {
       setIsLoading(false)
     }

@@ -1,12 +1,12 @@
 export const categories = [
-  { id: 'frutas', name: 'Frutas y verduras', emoji: '🥬', color: 'bg-lime-100', description: 'Frescura del campo a tu mesa' },
-  { id: 'carnes', name: 'Carnes', emoji: '🥩', color: 'bg-rose-100', description: 'Cortes seleccionados' },
-  { id: 'lacteos', name: 'Lácteos', emoji: '🥛', color: 'bg-sky-100', description: 'Todos los días más fresco' },
-  { id: 'panaderia', name: 'Panadería', emoji: '🥖', color: 'bg-amber-100', description: 'Recién horneado' },
-  { id: 'bebidas', name: 'Bebidas', emoji: '🧃', color: 'bg-violet-100', description: 'Para cada momento' },
-  { id: 'despensa', name: 'Despensa', emoji: '🫙', color: 'bg-orange-100', description: 'Lo esencial de tu cocina' },
-  { id: 'limpieza', name: 'Limpieza', emoji: '🧼', color: 'bg-cyan-100', description: 'Hogar impecable' },
-  { id: 'snacks', name: 'Snacks', emoji: '🍿', color: 'bg-yellow-100', description: 'Antojos resueltos' },
+  { id: 'frutas', name: 'Fruits & vegetables', emoji: '🥬', color: 'bg-lime-100', description: 'Freshness from field to table' },
+  { id: 'carnes', name: 'Meat', emoji: '🥩', color: 'bg-rose-100', description: 'Selected cuts' },
+  { id: 'lacteos', name: 'Dairy', emoji: '🥛', color: 'bg-sky-100', description: 'Fresh every day' },
+  { id: 'panaderia', name: 'Bakery', emoji: '🥖', color: 'bg-amber-100', description: 'Freshly baked' },
+  { id: 'bebidas', name: 'Beverages', emoji: '🧃', color: 'bg-violet-100', description: 'For every moment' },
+  { id: 'despensa', name: 'Pantry', emoji: '🫙', color: 'bg-orange-100', description: 'Kitchen essentials' },
+  { id: 'limpieza', name: 'Cleaning', emoji: '🧼', color: 'bg-cyan-100', description: 'A spotless home' },
+  { id: 'snacks', name: 'Snacks', emoji: '🍿', color: 'bg-yellow-100', description: 'Cravings solved' },
 ]
 
 export const products = [
@@ -28,4 +28,4 @@ export const recipes = [
   { id: 'arroz-pollo', name: 'Arroz con pollo', time: '40 min', difficulty: 'Media', emoji: '🍛', ingredients: ['arroz', 'pollo', 'tomate'] },
 ]
 
-export const formatPrice = (value) => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value)
+export const formatPrice = (value) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value)
