@@ -1,0 +1,6 @@
+<svg width="244" height="64" viewBox="0 0 244 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="18" fill="#C8F25D"/>
+  <path d="M15 43V26.5C15 23.462 18.462 21.747 20.864 23.579L29.272 29.991C30.884 31.221 33.116 31.221 34.728 29.991L43.136 23.579C45.538 21.747 49 23.462 49 26.5V43" stroke="#102A2B" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="48" cy="16" r="6" fill="#0B8C69"/>
+  <text x="80" y="41" fill="#F7FAF5" font-family="Manrope, Aptos, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="-1.4">mark<tspan fill="#C8F25D">EC</tspan><tspan fill="#F7FAF5">IA</tspan></text>
+</svg>

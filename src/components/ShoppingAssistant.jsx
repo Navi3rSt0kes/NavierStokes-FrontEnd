@@ -1,0 +1,13 @@
+import { Bot, Send, Sparkles, X } from 'lucide-react'
+import { useState } from 'react'
+import { products } from '../lib/data'
+import { useStore } from '../store/useStore'
+
+export default function ShoppingAssistant() {
+  const [open, setOpen] = useState(false)
+  const [input, setInput] = useState('')
+  const [messages, setMessages] = useState([{ role: 'bot', text: '¡Hola! Puedo ayudarte a armar tu mercado, encontrar ingredientes o resolver la cena de hoy.' }])
+  const addToCart = useStore((state) => state.addToCart)
+  const send = (event) => { event.preventDefault(); if (!input.trim()) return; const text = input.trim(); setMessages((current) => [...current, { role: 'user', text }, { role: 'bot', text: 'Te recomiendo pasta, pechuga de pollo y tomate para una comida rápida. Ya puedes agregarlos desde abajo.', picks: ['pasta', 'pollo', 'tomate'] }]); setInput('') }
+  return <div className="fixed bottom-5 right-5 z-30"><button onClick={() => setOpen(!open)} aria-label="Abrir asistente de compras" className="ml-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-700/30 transition hover:scale-105">{open ? <X/> : <Bot/>}</button>{open && <section className="absolute bottom-16 right-0 flex h-[440px] w-[min(360px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-2xl"><header className="flex items-center gap-3 bg-slate-900 p-4 text-white"><div className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-500"><Sparkles size={18}/></div><div><h2 className="font-bold">Asistente markECIA</h2><p className="text-xs text-slate-300">Recomendaciones inteligentes</p></div></header><div className="flex-1 space-y-3 overflow-y-auto p-4">{messages.map((message, index) => <div key={index} className={`rounded-2xl px-3 py-2.5 text-sm leading-5 ${message.role === 'user' ? 'ml-8 bg-emerald-600 text-white' : 'mr-5 bg-stone-100 text-slate-700'}`}><p>{message.text}</p>{message.picks && <div className="mt-3 space-y-1">{message.picks.map((id) => { const product = products.find((item) => item.id === id); return <button key={id} onClick={() => addToCart(product)} className="block w-full rounded-lg bg-white px-2 py-1.5 text-left text-xs font-semibold text-emerald-700 shadow-sm">+ Agregar {product.name}</button> })}</div>}</div>)}</div><form onSubmit={send} className="flex gap-2 border-t border-stone-100 p-3"><input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ej. Cena para 4 personas" className="min-w-0 flex-1 rounded-xl bg-stone-100 px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-emerald-500"/><button className="rounded-xl bg-emerald-600 p-2 text-white"><Send size={18}/></button></form></section>}</div>
+}
