@@ -2,11 +2,12 @@ import { Route, Routes, useParams } from 'react-router-dom'
 import Header from './components/Header'
 import CartDrawer from './components/CartDrawer'
 import ShoppingAssistant from './components/ShoppingAssistant'
-import { AccountPage, CartPage, CategoriesPage, CheckoutPage, HomePage, ListsPage, OffersPage, OrdersPage, ProductPage, RecipesPage, ShopPage, SuccessPage, WishlistPage } from './pages'
+import { AccountPage, CartPage, CategoriesPage, CheckoutPage, HomePage, ListsPage, OffersPage, OrdersPage, ProductPage, RecipesPage, SuccessPage, WishlistPage } from './pages'
+import DatabaseShopPage from './components/DatabaseShopPage'
 
 function CategoryShop() {
   const { slug } = useParams()
-  return <ShopPage categoryId={slug} />
+  return <DatabaseShopPage categoryId={slug} />
 }
 
 export default function App() {
@@ -15,8 +16,8 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/search" element={<ShopPage />} />
+        <Route path="/shop" element={<DatabaseShopPage />} />
+        <Route path="/search" element={<DatabaseShopPage />} />
         <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/category/:slug" element={<CategoryShop />} />
         <Route path="/product/:id" element={<ProductPage />} />

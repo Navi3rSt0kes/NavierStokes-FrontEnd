@@ -1,9 +1,10 @@
 import { ArrowRight, Check, ChevronRight, Clock, CreditCard, Heart, MapPin, Package, Search, ShieldCheck, SlidersHorizontal, Sparkles, Star, Truck } from 'lucide-react'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { categories, formatPrice, products, recipes } from './lib/data'
 import ProductCard from './components/ProductCard'
 import { useStore } from './store/useStore'
+import { api } from './lib/api'
 
 const SectionTitle = ({ eyebrow, title, link }) => <div className="mb-6 flex items-end justify-between gap-4"><div>{eyebrow && <p className="mb-2 text-xs font-bold uppercase tracking-[.18em] text-emerald-700">{eyebrow}</p>}<h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">{title}</h2></div>{link && <Link to={link} className="flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-800">Ver todo <ArrowRight size={16}/></Link>}</div>
 
