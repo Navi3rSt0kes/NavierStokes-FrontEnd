@@ -51,4 +51,4 @@ Desktop.ini
 .vercel/
 .netlify/
 .firebase/
-.agents/
+.agents
