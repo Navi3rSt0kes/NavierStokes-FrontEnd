@@ -9,6 +9,7 @@ export const categories = [
   { id: 'snacks', name: 'Snacks', emoji: '🍿', color: 'bg-yellow-100', description: 'Cravings solved' },
 ]
 
+const productLabels = { aguacate: 'Hass avocado', leche: 'Whole milk', pan: 'Country bread', pollo: 'Chicken breast', arroz: 'Premium rice', tomate: 'Fresh tomato', cafe: 'Ground coffee', yogurt: 'Greek yogurt', pasta: 'Spaghetti pasta', manzanas: 'Red apples' }
 export const products = [
   { id: 'aguacate', name: 'Aguacate Hass', brand: 'Campo Vivo', price: 4800, oldPrice: 6000, category: 'frutas', unit: 'Unidad', rating: 4.8, reviews: 126, emoji: '🥑', badge: '-20%', description: 'Aguacates maduros, cremosos y seleccionados a mano.' },
   { id: 'leche', name: 'Leche entera', brand: 'Alpina', price: 5900, category: 'lacteos', unit: '1 L', rating: 4.9, reviews: 204, emoji: '🥛', description: 'Leche entera ultrapasteurizada, fuente de calcio.' },
@@ -20,12 +21,12 @@ export const products = [
   { id: 'yogurt', name: 'Yogurt griego', brand: 'Alpina', price: 9600, category: 'lacteos', unit: '500 g', rating: 4.8, reviews: 112, emoji: '🥣', description: 'Yogurt griego natural, alto en proteína.' },
   { id: 'pasta', name: 'Pasta spaghetti', brand: 'Doria', price: 5300, category: 'despensa', unit: '500 g', rating: 4.6, reviews: 65, emoji: '🍝', description: 'Pasta de sémola de trigo duro para tus platos favoritos.' },
   { id: 'manzanas', name: 'Manzanas rojas', brand: 'Campo Vivo', price: 8900, category: 'frutas', unit: '1 kg', rating: 4.7, reviews: 89, emoji: '🍎', description: 'Manzanas crujientes y dulces de cosecha reciente.' },
-]
+].map((product) => ({ ...product, name: productLabels[product.id] || product.name, description: 'Selected quality product for MarkECIA.' }))
 
 export const recipes = [
   { id: 'pasta-cremosa', name: 'Pasta cremosa con pollo', time: '25 min', difficulty: 'Fácil', emoji: '🍝', ingredients: ['pasta', 'pollo', 'tomate'] },
   { id: 'desayuno', name: 'Desayuno energético', time: '10 min', difficulty: 'Fácil', emoji: '🥑', ingredients: ['aguacate', 'pan', 'yogurt'] },
   { id: 'arroz-pollo', name: 'Arroz con pollo', time: '40 min', difficulty: 'Media', emoji: '🍛', ingredients: ['arroz', 'pollo', 'tomate'] },
-]
+].map((recipe) => ({ ...recipe, name: ({ 'pasta-cremosa': 'Creamy chicken pasta', desayuno: 'Energy breakfast', 'arroz-pollo': 'Chicken and rice' })[recipe.id] || recipe.name, difficulty: recipe.difficulty === 'Fácil' ? 'Easy' : 'Medium' }))
 
 export const formatPrice = (value) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(value)
